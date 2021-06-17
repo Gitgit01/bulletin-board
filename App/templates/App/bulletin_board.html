@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Bulletin Board</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>{{ article.title }}</h1>
+    <hr>
+
+    {% for comment in comments %}
+        <h3>{{ comment.text | linebreaksbr }}</h3>
+        <small>[{{ comment.posted_at }}]</small>
+        <hr width="95%">
+    {% endfor %}
+    
+    <br>
+    <form action="{% url 'bb' article.id %}" method="post">
+        {% csrf_token %}
+            <label for='textInput'>Text</label>
+            <textarea name='text' class='form-control' rows='3'></textarea>
+            <button type='submit'>送信</button>
+    </form>
+
+    <p><a href="{% url 'home' %}">ホームへ</a></p>
+    <p><a href="{% url 'bbl' %}">掲示板一覧へ</a></p>
+</body>
+</html>

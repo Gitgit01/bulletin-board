@@ -1,0 +1,10 @@
+h1{
+    text-align: center;
+    font-weight: 100;
+}
+
+h2{
+    position: relative;
+    top: 10px;
+    left: 30px;
+}
